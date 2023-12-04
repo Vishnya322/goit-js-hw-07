@@ -11,7 +11,16 @@ const destroyButton = document.querySelector('button[data-destroy]');
 destroyButton.classList.add('custom-button-destroy');
 const boxesContainer = document.querySelector('#boxes');
 
-createButton.addEventListener('click', () => createBoxes(input.value));
+let boxesCreated = false; 
+
+createButton.addEventListener('click', () => {
+  if (boxesCreated) {
+    destroyBoxes(); 
+  }
+  createBoxes(input.value); 
+  boxesCreated = true;
+});
+
 destroyButton.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
